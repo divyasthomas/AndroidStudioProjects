@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Greeting Card</string>
-    <string name="merry_christmas_text">Merry Christmas, Moshi</string>
-    <string name="from_text">From a Momo</string>
+    <string name="merry_christmas_text">Merry Christmas, World</string>
+    <string name="from_text">From Divya</string>
     <string name="heart_text">"%1$s ❤️ "</string>
 </resources>
