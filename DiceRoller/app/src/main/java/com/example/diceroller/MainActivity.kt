@@ -64,10 +64,12 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
     }
     Column( modifier= modifier,
         horizontalAlignment = Alignment.CenterHorizontally) {
-        Image(painter = painterResource(id = imageResource), contentDescription = result.toString())
-        Spacer(modifier = Modifier.height(16.dp))
+//        Image(painter = painterResource(id = imageResource), contentDescription = result.toString())
+//        Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = { result=( 1..6).random() }) {
-            Text(stringResource(R.string.roll))
+            Image(painter = painterResource(id = imageResource), contentDescription = result.toString())
+            Text(stringResource(R.string.roll)
+            )
         }
     }
 
