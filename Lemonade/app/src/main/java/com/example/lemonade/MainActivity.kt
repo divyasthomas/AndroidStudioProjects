@@ -53,7 +53,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun LemonadeApp() {
 
-    var currentStep by remember { mutableStateOf(1) }
+    var currentStep by remember { mutableStateOf("tree") }
+    var first_time by remember {
+        mutableStateOf(1)
+    }
 
     var squeezeCount by remember { mutableStateOf(0) }
 
@@ -83,48 +86,52 @@ fun LemonadeApp() {
             color = MaterialTheme.colorScheme.background
         ) {
             when (currentStep) {
-                1 -> {
+                "tree" -> {
                     LemonTextAndImage(
                         textLabelResourceId = R.string.lemon_select,
                         drawableResourceId = R.drawable.lemon_tree,
                         contentDescriptionResourceId = R.string.lemon_tree_content_description,
                         onImageClick = {
-                            currentStep = 2
-                            squeezeCount = (2..4).random()
+                            currentStep = "lemon"
+                            squeezeCount = (2..6).random()
                         }
                     )
                 }
-                2 -> {
+                "lemon" -> {
                     LemonTextAndImage(
-                        textLabelResourceId = R.string.lemon_squeeze,
+                            textLabelResourceId =  if (squeezeCount != 0 && first_time==0)  R.string.lemon_squeeze2
+                                else R.string.lemon_squeeze,
+
                         drawableResourceId = R.drawable.lemon_squeeze,
                         contentDescriptionResourceId = R.string.lemon_content_description,
                         onImageClick = {
                             squeezeCount--
+                            first_time=0
                             if (squeezeCount == 0) {
-                                currentStep = 3
+                                currentStep = "lemonade"
                             }
                         }
                     )
                 }
 
-                3 -> {
+                "lemonade" -> {
                     LemonTextAndImage(
                         textLabelResourceId = R.string.lemon_drink,
                         drawableResourceId = R.drawable.lemon_drink,
                         contentDescriptionResourceId = R.string.lemonade_content_description,
                         onImageClick = {
-                            currentStep = 4
+                            currentStep = "empty"
                         }
                     )
                 }
-                4 -> {
+                "empty" -> {
                     LemonTextAndImage(
                         textLabelResourceId = R.string.lemon_empty_glass,
                         drawableResourceId = R.drawable.lemon_restart,
                         contentDescriptionResourceId = R.string.empty_glass_content_description,
                         onImageClick = {
-                            currentStep = 1
+                            currentStep = "tree"
+                            first_time=1
                         }
                     )
                 }
@@ -168,6 +175,8 @@ fun LemonTextAndImage(
                 text = stringResource(textLabelResourceId),
                 style = MaterialTheme.typography.bodyLarge
             )
+
+
         }
     }
 }

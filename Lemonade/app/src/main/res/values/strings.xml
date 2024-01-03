@@ -2,6 +2,7 @@
     <string name="app_name">Lemonade</string>
     <string name="lemon_select">Tap the lemon tree to select a lemon</string>
     <string name="lemon_squeeze">Keep tapping the lemon to squeeze it</string>
+    <string name="lemon_squeeze2">Squeeze Again!</string>
     <string name="lemon_drink">Tap the lemonade to drink it</string>
     <string name="lemon_empty_glass">Tap the empty glass to start again</string>
     <string name="lemon_tree_content_description">Lemon tree</string>
